@@ -4,3 +4,25 @@
   width: 8rem;
   padding: 8px;
 }
+
+.p-checkbox .p-checkbox-box.p-highlight .p-checkbox-icon.pi-check:before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 1px;
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 0% 100%;
+  transform-origin: 0% 100%;
+  -webkit-animation: checkbox-check 125ms 50ms linear forwards;
+  animation: checkbox-check 125ms 50ms linear forwards;
+}
+
+.p-checkbox .p-checkbox-box {
+  top: -2px;
+  border-color: #757575;
+  border-radius: 2px;
+  position: relative;
+}
