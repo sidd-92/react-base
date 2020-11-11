@@ -3521,6 +3521,10 @@ video {
   background-image: linear-gradient(to top left, var(--gradient-color-stops));
 }
 
+.bg-buttonGradient {
+  background-image: linear-gradient(to left, #ff416c, #ff4b2b);
+}
+
 .from-transparent {
   --gradient-from-color: transparent;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
@@ -22145,6 +22149,10 @@ video {
     background-image: linear-gradient(to top left, var(--gradient-color-stops));
   }
 
+  .sm\:bg-buttonGradient {
+    background-image: linear-gradient(to left, #ff416c, #ff4b2b);
+  }
+
   .sm\:from-transparent {
     --gradient-from-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
@@ -40737,6 +40745,10 @@ video {
 
   .md\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--gradient-color-stops));
+  }
+
+  .md\:bg-buttonGradient {
+    background-image: linear-gradient(to left, #ff416c, #ff4b2b);
   }
 
   .md\:from-transparent {
@@ -59333,6 +59345,10 @@ video {
     background-image: linear-gradient(to top left, var(--gradient-color-stops));
   }
 
+  .lg\:bg-buttonGradient {
+    background-image: linear-gradient(to left, #ff416c, #ff4b2b);
+  }
+
   .lg\:from-transparent {
     --gradient-from-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
@@ -77925,6 +77941,10 @@ video {
 
   .xl\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--gradient-color-stops));
+  }
+
+  .xl\:bg-buttonGradient {
+    background-image: linear-gradient(to left, #ff416c, #ff4b2b);
   }
 
   .xl\:from-transparent {
