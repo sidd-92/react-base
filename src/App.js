@@ -23,16 +23,18 @@ class App extends React.Component {
               <Checkbox onChange={(e) => this.setState({ checked: e.checked })} checked={false}></Checkbox>
             </div>
             <div className="w-4/5">
-              <div className="flex items-center">
-                <div className="capitalize rounded-full w-10 h-10 bg-green-600 text-center text-white hidden xxl:flex justify-center items-center">
+              <div className="w-full grid grid-cols-12 items-center">
+                <div className="w-10 h-10 capitalize rounded-full bg-green-600 text-center text-white flex justify-center items-center">
                   {contact.firstname.charAt(0)}
                   {contact.lastname.charAt(0)}
                 </div>
-                <div className="flex flex-col items-start ml-0 xxl:ml-3">
-                  <div className="font-bold break-all">
-                    {contact.firstname} {contact.lastname}
+                <div className="col-span-11 ml-6">
+                  <div className="flex flex-col items-start ml-2">
+                    <div className="font-bold break-words">
+                      {contact.firstname} {contact.lastname}
+                    </div>
+                    <div className="font-thin text-xs truncate">{contact.email}</div>
                   </div>
-                  <div className="font-thin text-xs truncate">{contact.email}</div>
                 </div>
               </div>
             </div>
@@ -72,7 +74,7 @@ class App extends React.Component {
         <Dialog
           header="Add A Contact"
           visible={this.state.displayBasic}
-          className="w-2/5"
+          className="w-3/4 xxl:w-2/5"
           onHide={() => {
             this.setState({ displayBasic: false });
           }}
@@ -139,23 +141,21 @@ class App extends React.Component {
           <i className="pi pi-power-off mb-8"></i>
         </div>
 
-        <div className="bg-white pt-16 sm:px-2 xxl:px-40 ml-5">
+        <div className="bg-white pt-16 ml-16 pl-8 pr-10">
           <div className="text-2xl font-bold">Contacts</div>
-          <div className="flex justify-between mt-10 mb-10">
-            <div className="flex items-center">
-              <div>
-                <SearchTextBox />
-              </div>
-              <div className="ml-6">
-                <PrimaryButton
-                  onClick={() => {
-                    this.setState({ displayBasic: true });
-                  }}
-                />
-              </div>
+          <div className="w-full flex items-center flex-wrap my-6">
+            <div className="w-full mt-6 md:mt-0 md:w-2/6">
+              <SearchTextBox />
+            </div>
+            <div className="w-full mt-2 md:mt-0 md:w-auto md:ml-6">
+              <PrimaryButton
+                onClick={() => {
+                  this.setState({ displayBasic: true });
+                }}
+              />
             </div>
           </div>
-          <div className="flex">
+          <div className="w-full grid grid-cols-1 row-gap-8 md:row-gap-0 lg:grid-cols-2">
             <div className="min-w-half">
               <div className="flex flex-col">
                 <div className="flex items-center bg-gray-200 text-black p-4">
@@ -168,7 +168,7 @@ class App extends React.Component {
                 {this.renderContacts()}
               </div>
             </div>
-            <div className="bg-gray-300 h-40 p-8 w-full ml-4"></div>
+            <div className="bg-gray-300 h-40 p-8 ml-0 lg:ml-4"></div>
           </div>
         </div>
       </React.Fragment>
