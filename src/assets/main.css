@@ -11945,6 +11945,18 @@ video {
   min-width: 100%;
 }
 
+.min-w-half {
+  min-width: 50%;
+}
+
+.min-w-quarter {
+  min-width: 25%;
+}
+
+.min-w-15\% {
+  min-width: 15%;
+}
+
 .object-contain {
   object-fit: contain;
 }
@@ -30697,6 +30709,18 @@ video {
     min-width: 100%;
   }
 
+  .sm\:min-w-half {
+    min-width: 50%;
+  }
+
+  .sm\:min-w-quarter {
+    min-width: 25%;
+  }
+
+  .sm\:min-w-15\% {
+    min-width: 15%;
+  }
+
   .sm\:object-contain {
     object-fit: contain;
   }
@@ -49417,6 +49441,18 @@ video {
 
   .md\:min-w-full {
     min-width: 100%;
+  }
+
+  .md\:min-w-half {
+    min-width: 50%;
+  }
+
+  .md\:min-w-quarter {
+    min-width: 25%;
+  }
+
+  .md\:min-w-15\% {
+    min-width: 15%;
   }
 
   .md\:object-contain {
@@ -68141,6 +68177,18 @@ video {
     min-width: 100%;
   }
 
+  .lg\:min-w-half {
+    min-width: 50%;
+  }
+
+  .lg\:min-w-quarter {
+    min-width: 25%;
+  }
+
+  .lg\:min-w-15\% {
+    min-width: 15%;
+  }
+
   .lg\:object-contain {
     object-fit: contain;
   }
@@ -86863,6 +86911,18 @@ video {
     min-width: 100%;
   }
 
+  .xl\:min-w-half {
+    min-width: 50%;
+  }
+
+  .xl\:min-w-quarter {
+    min-width: 25%;
+  }
+
+  .xl\:min-w-15\% {
+    min-width: 15%;
+  }
+
   .xl\:object-contain {
     object-fit: contain;
   }
@@ -105583,6 +105643,18 @@ video {
 
   .xxl\:min-w-full {
     min-width: 100%;
+  }
+
+  .xxl\:min-w-half {
+    min-width: 50%;
+  }
+
+  .xxl\:min-w-quarter {
+    min-width: 25%;
+  }
+
+  .xxl\:min-w-15\% {
+    min-width: 15%;
   }
 
   .xxl\:object-contain {

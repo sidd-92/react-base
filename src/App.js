@@ -104,8 +104,8 @@ class App extends React.Component {
             </div>
           </div>
         </Dialog>
-        <nav class="font-sans bg-white text-center flex items-center justify-between overflow-hidden shadow-md mb-2 h-12 px-6">
-          <i className="pi pi-search" style={{ fontSize: "21px" }}></i>
+        <nav class="absolute w-full font-sans bg-white text-center flex items-center justify-between overflow-hidden shadow-md mb-2 h-12 px-6 z-0">
+          <i className="pi pi-search ml-16" style={{ fontSize: "21px" }}></i>
 
           <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
             <div className="w-48">
@@ -127,7 +127,19 @@ class App extends React.Component {
             </div>
           </ul>
         </nav>
-        <div className="bg-white h-screen pt-8 sm:px-2 xxl:px-40">
+        <div class="sidenav z-10 bg-buttonGradient flex flex-col justify-start items-center text-white">
+          <i className="pi pi-bars mb-16"></i>
+          <i className="pi pi-home mb-8"></i>
+          <i className="pi pi-user mb-8"></i>
+          <i className="pi pi-briefcase mb-8"></i>
+          <i className="pi pi-shopping-cart mb-8"></i>
+          <i className="pi pi-sitemap mb-8"></i>
+          <i className="pi pi-money-bill mb-8"></i>
+          <i className="pi pi-cog mb-8"></i>
+          <i className="pi pi-power-off mb-8"></i>
+        </div>
+
+        <div className="bg-white pt-16 sm:px-2 xxl:px-40 ml-5">
           <div className="text-2xl font-bold">Contacts</div>
           <div className="flex justify-between mt-10 mb-10">
             <div className="flex items-center">
@@ -142,22 +154,9 @@ class App extends React.Component {
                 />
               </div>
             </div>
-            <div>
-              <UserSelectDropdown
-                disabled={this.state.contacts.length === 0}
-                value={this.state.selectedContact}
-                options={this.state.contacts}
-                panelClassName="truncate"
-                optionLabel="firstname"
-                onChange={(e) => {
-                  this.setState({ selectedContact: e.value });
-                }}
-                placeholder="Select a Contact"
-              />
-            </div>
           </div>
           <div className="flex">
-            <div style={{ minWidth: "50%" }}>
+            <div className="min-w-half">
               <div className="flex flex-col">
                 <div className="flex items-center bg-gray-200 text-black p-4">
                   <div className="w-12">
