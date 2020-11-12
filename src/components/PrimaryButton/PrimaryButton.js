@@ -9,7 +9,7 @@ class PrimaryButton extends React.Component {
     };
   }
   render() {
-    return <Button label="Add Contact" iconPos="left" icon="pi pi-plus" className="h-10 bg-buttonGradient" />;
+    return <Button {...this.props} label="Add Contact" iconPos="left" icon="pi pi-plus" className="w-full h-10 bg-buttonGradient" />;
   }
 }
 
