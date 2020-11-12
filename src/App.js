@@ -10,17 +10,33 @@ import { Button } from "primereact/button";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { userInfo: {}, contacts: [] };
+    this.state = { userInfo: {}, contacts: [], selectedUsers: {} };
     this.renderContacts = this.renderContacts.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleSelectedContact = this.handleSelectedContact.bind(this);
+  }
+
+  handleSelectedContact(e, index) {
+    let selectedUsers = { ...this.state.selectedUsers };
+    if (index in this.state.selectedUsers) {
+      delete selectedUsers[index];
+    } else {
+      selectedUsers[index] = true;
+    }
+    this.setState({ selectedUsers });
   }
 
   renderContacts() {
     return this.state.contacts.length > 0
-      ? this.state.contacts.map((contact) => (
+      ? this.state.contacts.map((contact, index) => (
           <div className="flex items-center hover:bg-gray-100 text-black p-4">
             <div className="w-12">
-              <Checkbox onChange={(e) => this.setState({ checked: e.checked })} checked={false}></Checkbox>
+              <Checkbox
+                onChange={(e) => {
+                  this.handleSelectedContact(e, index);
+                }}
+                checked={index in this.state.selectedUsers}
+              ></Checkbox>
             </div>
             <div className="w-4/5">
               <div className="w-full grid grid-cols-12 items-center">
