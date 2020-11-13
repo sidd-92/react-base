@@ -10,8 +10,9 @@ import { Button } from "primereact/button";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { userInfo: {}, contacts: [], selectedUsers: {} };
+    this.state = { userInfo: {}, contacts: [], selectedUsers: {}, viewUser: {} };
     this.renderContacts = this.renderContacts.bind(this);
+    this.renderContactInfoCard = this.renderContactInfoCard.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleSelectedContact = this.handleSelectedContact.bind(this);
   }
@@ -29,7 +30,12 @@ class App extends React.Component {
   renderContacts() {
     return this.state.contacts.length > 0
       ? this.state.contacts.map((contact, index) => (
-          <div className="flex items-center hover:bg-gray-100 text-black p-4">
+          <div
+            className="flex items-center hover:bg-gray-100 text-black p-4"
+            onClick={() => {
+              this.setState({ viewUser: { ...contact } });
+            }}
+          >
             <div className="w-12">
               <Checkbox
                 onChange={(e) => {
@@ -58,6 +64,52 @@ class App extends React.Component {
           </div>
         ))
       : "";
+  }
+
+  renderContactInfoCard() {
+    let viewUser = { ...this.state.viewUser };
+    return viewUser.firstname && viewUser.lastname ? (
+      <div className="bg-gray-300 p-6 lg:ml-10">
+        <div className="text-center text-sm w-16 bg-white rounded-md transition duration-200 hover:bg-indigo-500 hover:text-white cursor-pointer">
+          <i className="pi pi-comments" style={{ fontSize: "0.875rem" }}></i> Chat
+        </div>
+        <div className="flex flex-col items-center ">
+          <div className="capitalize text-2xl w-24 h-24 rounded-full bg-green-600 text-center text-white flex justify-center items-center">
+            {viewUser.firstname && viewUser.firstname.charAt(0)}
+            {viewUser.lastname && viewUser.lastname.charAt(0)}
+          </div>
+          <div className="text-center text-black flex justify-center items-center font-bold text-lg xxl:text-2xl py-2 break-all">
+            {viewUser.firstname} {viewUser.lastname}
+          </div>
+          <div className="mt-6">
+            <div className="w-full grid grid-cols-3">
+              <div>Full Name</div>
+              <div className="col-span-2 break-all">
+                {viewUser.firstname} {viewUser.lastname}
+              </div>
+            </div>
+            <div className="w-full grid grid-cols-3 mt-4">
+              <div>Email</div>
+              <div className="col-span-2 break-all">{viewUser.email}</div>
+            </div>
+            <div className="w-full grid grid-cols-3 mt-4">
+              <div>Phone</div>
+              <div className="col-span-2 break-all">{viewUser.phone || "-"}</div>
+            </div>
+            <div className="w-full grid grid-cols-3 mt-4">
+              <div>Company</div>
+              <div className="col-span-2 break-all">{viewUser.company}</div>
+            </div>
+            <div className="w-full grid grid-cols-3 mt-4">
+              <div>Address</div>
+              <div className="col-span-2 break-all">{viewUser.address}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ) : (
+      ""
+    );
   }
 
   handleClick() {
@@ -157,7 +209,7 @@ class App extends React.Component {
           <i className="pi pi-power-off mb-8"></i>
         </div>
 
-        <div className="bg-white pt-16 ml-16 pl-8 pr-10">
+        <div className="bg-white pt-16 ml-16 pl-8 pr-10 mb-16">
           <div className="text-2xl font-bold">Contacts</div>
           <div className="w-full flex items-center flex-wrap my-6">
             <div className="w-full mt-6 md:mt-0 md:w-2/6">
@@ -171,8 +223,8 @@ class App extends React.Component {
               />
             </div>
           </div>
-          <div className="w-full grid grid-cols-1 row-gap-8 md:row-gap-0 lg:grid-cols-2">
-            <div className="min-w-half">
+          <div className="w-full grid grid-cols-1 row-gap-8 md:row-gap-0 lg:grid-cols-6">
+            <div className={this.state.viewUser && this.state.viewUser.firstname ? "col-span-4" : "col-span-6"}>
               <div className="flex flex-col">
                 <div className="flex items-center bg-gray-200 text-black p-4">
                   <div className="w-12">
@@ -184,7 +236,7 @@ class App extends React.Component {
                 {this.renderContacts()}
               </div>
             </div>
-            <div className="bg-gray-300 h-40 p-8 ml-0 lg:ml-4"></div>
+            <div className="col-span-2">{this.renderContactInfoCard()}</div>
           </div>
         </div>
       </React.Fragment>

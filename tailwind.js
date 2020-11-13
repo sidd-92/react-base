@@ -21,6 +21,7 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       button: "#ff416c",
+      button2: "#ff4b2b",
       black: "#000",
       white: "#fff",
 
@@ -365,6 +366,7 @@ module.exports = {
     minWidth: {
       0: "0",
       full: "100%",
+      "75%": "75%",
       half: "50%",
       quarter: "25%",
       "15%": "15%",
