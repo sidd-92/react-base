@@ -56,3 +56,28 @@
 .sidenav a:hover {
   color: #f1f1f1;
 }
+
+.p-dialog .p-dialog-header {
+  border-bottom: 0 none;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 0.5rem;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.p-dialog .p-dialog-footer {
+  border-top: 0 none;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 0.8rem 1.5rem;
+  text-align: right;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.p-dialog .p-dialog-content {
+  background: #ffffff;
+  color: black;
+  padding: 0.2rem 1rem 1rem 1rem;
+}
