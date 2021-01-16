@@ -5,6 +5,7 @@ import { Calendar } from "primereact/calendar";
 import AnalyticsCard from "./components/AnalyticsCard/AnalyticsCard";
 import FullScreenDialog from "./components/FullScreenDialog/FullScreenDialog";
 import DataPanel from "./components/DataPanel/DataPanel";
+import Header from "./components/Header/Header";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -38,15 +39,13 @@ class App extends React.Component {
           dialogVisible={this.state.dialogVisible}
           hideDialogHandler={() => this.setState({ dialogVisible: false })}
         ></FullScreenDialog>
+        <Header />
         <div className="m-1">
-          <div className="flex justify-between items-center">
-            <div className="font-bold text-2xl">Overview</div>
-            <div className="text-sm">{this.state.todayDate}</div>
-          </div>
-          <div className="w-full mt-2">
+          <div className="font-bold text-2xl">Overview</div>
+          <div className="w-full mt-1">
             <AnalyticsCard />
           </div>
-          <div className="flex justify-between items-center mt-2">
+          <div className="flex justify-between items-center my-2">
             <div className="font-thin text-md">Your Transactions</div>
             <div className="flex items-center text-sm hover:underline hover:text-yellow-400">
               <div onClick={(e) => this.filter.current.toggle(e)}>
@@ -59,7 +58,7 @@ class App extends React.Component {
           </div>
 
           <div
-            style={{ height: "480px" }}
+            style={{ height: "400px" }}
             className="overflow-scroll text-justify pb-10"
           >
             <DataPanel
