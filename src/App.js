@@ -5,6 +5,7 @@ import Categories from "./Categories";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { linkPageOverview, linkPageProfile } from "./routes";
 class App extends React.Component {
   render() {
     return (
@@ -20,14 +21,14 @@ class App extends React.Component {
               />
               <Route
                 exact
-                path={"/"}
+                path={linkPageOverview}
                 name={"Main"}
                 render={(props) => <Main {...props} />}
               />
               <Route
                 exact
-                path={"/profile"}
-                name={"Main"}
+                path={linkPageProfile}
+                name={"Profile"}
                 render={(props) => <Profile {...props} />}
               />
               <Route

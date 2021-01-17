@@ -11,7 +11,9 @@ class UserAccount extends React.Component {
     return (
       <React.Fragment>
         <OverlayPanel ref={this.logoutRef}>
-          <div className="text-red-300">Logout</div>
+          <div onClick={this.props.logout} className="text-red-300">
+            Logout
+          </div>
         </OverlayPanel>
         <Button
           label={this.props.userFirstLetter}

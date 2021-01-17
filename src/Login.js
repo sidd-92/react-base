@@ -2,6 +2,7 @@ import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
+import { linkPageOverview } from "./routes";
 import React from "react";
 import piggyBank from "./assets/img/piggy-bank.png";
 import SocialLoginButton from "./components/SocialLoginButton/SocialLoginButton";
@@ -82,7 +83,7 @@ class Login extends React.Component {
                         profile: user._profile,
                       })
                     );
-                    this.props.history.push("/");
+                    this.props.history.push(linkPageOverview);
                   });
                 }}
                 onLoginFailure={(err) => {

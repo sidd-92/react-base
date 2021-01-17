@@ -51,7 +51,7 @@ class Main extends React.Component {
           dialogVisible={this.state.dialogVisible}
           hideDialogHandler={() => this.setState({ dialogVisible: false })}
         ></FullScreenDialog>
-        <Header history={this.props.location} />
+        <Header history={this.props.location} location={this.props.history} />
         <div className="m-1">
           <div className="font-bold text-2xl">Overview</div>
           <div className="w-full mt-1">
