@@ -19,6 +19,13 @@ class Main extends React.Component {
       collapsePanel2: false,
     };
   }
+  componentDidMount() {
+    let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (userInfo && userInfo.profile) {
+    } else {
+      this.props.history.push("/login");
+    }
+  }
 
   render() {
     return (
