@@ -1,16 +1,23 @@
-import React from "react";
+import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
+import React from "react";
 import piggyBank from "./assets/img/piggy-bank.png";
 import SocialLoginButton from "./components/SocialLoginButton/SocialLoginButton";
-import { Button } from "primereact/button";
 class Login extends React.Component {
   constructor(props) {
     super(props);
+    this.nodes = {};
     this.state = {
       value: "",
     };
+  }
+
+  setNodeRef(provider, node) {
+    if (node) {
+      this.nodes[provider] = node;
+    }
   }
   render() {
     return (
@@ -55,28 +62,59 @@ class Login extends React.Component {
               />
             </div>
             <div className="flex items-center w-full justify-center mt-1 font-thin text-sm">
-              <div>Already A User ?</div>
+              <div className="text-white">Already A User ?</div>
               <div className="text-primary hover:text-white ml-1 underline">
                 Sign Up
               </div>
             </div>
+            <div className="text-center my-5">Or</div>
             <div className="w-full flex justify-between items-center">
               <SocialLoginButton
                 provider="google"
                 appId="931128188745-b8not07qakbsv13192kk7ru0cgpmks04.apps.googleusercontent.com"
-                onLoginSuccess={() => {
-                  alert("Success");
+                onLoginSuccess={(user) => {
+                  console.log("USERINFO", user);
+                  this.setState({ userLogged: true, userInfo: user });
                 }}
-                onLoginFailure={() => {
-                  alert("Failed");
+                onLoginFailure={(err) => {
+                  console.log(err, "Login Error");
+                  this.setState({ userLogged: false, userInfo: "" });
                 }}
+                onLogoutSuccess={() => {
+                  console.log("Logout Success");
+                  this.setState({
+                    logged: false,
+                    currentProvider: "",
+                    user: {},
+                  });
+                  localStorage.clear();
+                }}
+                onLogoutFailure={(err) => {
+                  console.error(err, "Logout Error");
+                }}
+                getInstance={this.setNodeRef.bind(this, "google")}
               >
                 <div className="w-full">
-                  <Button
-                    icon="pi pi-google"
-                    className="w-full bg-bg-google text-white border-0"
-                    label="Sign In Using Google"
-                  ></Button>
+                  {this.state.userLogged ? (
+                    <Button
+                      onClick={(e) => {
+                        const { userLogged, userInfo } = this.state;
+                        if (userLogged && userInfo._provider) {
+                          debugger;
+                          this.nodes[userInfo._provider].props.triggerLogout();
+                        }
+                      }}
+                      icon="pi pi-google"
+                      className="w-full bg-bg-google text-white border-0"
+                      label={`Logout ${this.state.userInfo._profile.firstName}`}
+                    ></Button>
+                  ) : (
+                    <Button
+                      icon="pi pi-google"
+                      className="w-full bg-bg-google text-white border-0"
+                      label="Sign In Using Google"
+                    ></Button>
+                  )}
                 </div>
               </SocialLoginButton>
             </div>
