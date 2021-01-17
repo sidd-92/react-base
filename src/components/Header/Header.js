@@ -12,6 +12,19 @@ let HeaderItems = (props) => {
 };
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: "Z",
+    };
+  }
+  componentDidMount() {
+    if (localStorage.getItem("userInfo")) {
+      let profile = JSON.parse(localStorage.getItem("userInfo")).profile;
+      let fn = profile["firstName"].split("");
+      this.setState({ firstName: fn[0] });
+    }
+  }
   render() {
     console.log("Hstory Props", this.props.history.pathname);
     return (
@@ -35,7 +48,7 @@ class Header extends React.Component {
           <HeaderItems toLink={"/login"} linkName="Login" />
         </div>
         <div>
-          <UserAccount userFirstLetter="Z" />
+          <UserAccount userFirstLetter={this.state.firstName} />
         </div>
       </div>
     );

@@ -74,7 +74,16 @@ class Login extends React.Component {
                 appId="931128188745-b8not07qakbsv13192kk7ru0cgpmks04.apps.googleusercontent.com"
                 onLoginSuccess={(user) => {
                   console.log("USERINFO", user);
-                  this.setState({ userLogged: true, userInfo: user });
+                  this.setState({ userLogged: true, userInfo: user }, () => {
+                    localStorage.setItem(
+                      "userInfo",
+                      JSON.stringify({
+                        token: user._token,
+                        profile: user._profile,
+                      })
+                    );
+                    this.props.history.push("/");
+                  });
                 }}
                 onLoginFailure={(err) => {
                   console.log(err, "Login Error");
