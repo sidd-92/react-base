@@ -32,6 +32,7 @@ class Header extends React.Component {
             linkName="Categories"
             isActiveLink={this.props.history.pathname === "/categories"}
           />
+          <HeaderItems toLink={"/login"} linkName="Login" />
         </div>
         <div>
           <UserAccount userFirstLetter="Z" />

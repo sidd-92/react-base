@@ -62,7 +62,7 @@ class Main extends React.Component {
             </div>
           </div>
 
-          <div className="overflow-auto text-justify pb-10 h-430px sm:h-auto">
+          <div className="overflow-auto text-justify pb-10 h-490px sm:h-auto">
             <DataPanel
               header="Title 1"
               collapsePanel={this.state.collapsePanel}

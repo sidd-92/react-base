@@ -3,6 +3,7 @@ import Main from "./Main";
 import Profile from "./Profile";
 import Categories from "./Categories";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "./Login";
 import { ProgressSpinner } from "primereact/progressspinner";
 class App extends React.Component {
   render() {
@@ -11,6 +12,12 @@ class App extends React.Component {
         <Router basename="/">
           <React.Suspense fallback={<ProgressSpinner />}>
             <Switch>
+              <Route
+                exact
+                path={"/login"}
+                name={"Main"}
+                render={(props) => <Login {...props} />}
+              />
               <Route
                 exact
                 path={"/"}
