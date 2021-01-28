@@ -1,35 +1,36 @@
 import React from "react";
-import TopMenu from "./components/TopMenu/TopMenu";
-import CustomCard from "./components/CustomCard/CustomCard";
-import { Button } from "primereact/button";
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 10,
-    };
-  }
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "./components/views/Login";
+import { linkLogin, linkPageHome } from "./routes";
 
+const DefaultLayout = React.lazy(() => import("./containers/DefaultLayout"));
+const Page404 = React.lazy(() => import("./components/views/Page404"));
+class App extends React.Component {
   render() {
     return (
-      <div className="container mx-auto">
-        <TopMenu />
-        <CustomCard
-          title="Book a Ride"
-          subTitle="Pool Carz is an online application which enables user to share rides with others. You can either book a ride or offer a ride."
-        >
-          <div className="flex flex-col items-center">
-            <Button
-              label="Show All Rides"
-              className="p-button-raised p-button-help w-full sm:w-3/12 mb-2"
+      <Router basename="/">
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route
+              exact
+              path="/404"
+              name="Page 404"
+              render={(props) => <Page404 {...props} />}
             />
-            <Button
-              label="Offer A Ride"
-              className="p-button-raised p-button-success w-full sm:w-3/12"
+            <Route
+              exact
+              path="/login"
+              name="Login"
+              render={(props) => <Login {...props} />}
             />
-          </div>
-        </CustomCard>
-      </div>
+            <Route
+              path="/"
+              name="Home"
+              render={(props) => <DefaultLayout {...props} />}
+            />
+          </Switch>
+        </React.Suspense>
+      </Router>
     );
   }
 }
