@@ -6,6 +6,7 @@ import { linkLogin } from "../../routes";
 const items = [
   {
     label: "Home",
+    style: { color: "white" },
   },
 ];
 class DemoMenu extends Menubar {
@@ -13,12 +14,13 @@ class DemoMenu extends Menubar {
     super(props);
   }
 }
+
 class TopMenu extends React.Component {
   render() {
     return (
       <DemoMenu
-        className="h-12 border-none shadow-md"
-        start={<div className="text-2xl font-bold mr-3">Pool Carz</div>}
+        className="h-12 border-none shadow-md bg-navbar text-textOnBg"
+        start={<div className="text-2xl font-bold mr-3 ">Pool Carz</div>}
         end={
           <Button
             onClick={() => {
@@ -26,7 +28,7 @@ class TopMenu extends React.Component {
               this.props.history.push(linkLogin);
             }}
             label="Logout"
-            className="p-button-danger p-button-text"
+            className="bg-transparent border-none text-button2"
           />
         }
         model={items}

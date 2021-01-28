@@ -7,7 +7,7 @@ class CustomCard extends React.Component {
     return (
       <div className="my-2">
         <Card
-          className="shadow-md bg-blue-200"
+          className="shadow-md bg-cardBg text-textOnBg"
           title={title}
           subTitle={subTitle}
         >
