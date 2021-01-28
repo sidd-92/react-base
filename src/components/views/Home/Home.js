@@ -13,7 +13,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="container mx-auto">
-        <TopMenu />
+        <TopMenu history={this.props.history} location={this.props.location} />
         <CustomCard
           title="Book a Ride"
           subTitle="Pool Carz is an online application which enables user to share rides with others. You can either book a ride or offer a ride."

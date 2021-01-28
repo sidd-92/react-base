@@ -1,10 +1,6 @@
-import axios from "axios";
-
 class AuthService {
-  constructor() {}
-
   login() {
-    localStorage.setItem("userInfo", { token: "Bearer" });
+    localStorage.setItem("userInfo", JSON.stringify({ token: "Bearer" }));
   }
 
   getUserInfo() {

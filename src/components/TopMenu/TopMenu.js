@@ -1,6 +1,7 @@
 import React from "react";
 import { Menubar } from "primereact/menubar";
 import { Button } from "primereact/button";
+import { linkLogin } from "../../routes";
 
 const items = [
   {
@@ -19,7 +20,14 @@ class TopMenu extends React.Component {
         className="h-12 border-none shadow-md"
         start={<div className="text-2xl font-bold mr-3">Pool Carz</div>}
         end={
-          <Button label="Logout" className="p-button-danger p-button-text" />
+          <Button
+            onClick={() => {
+              localStorage.clear();
+              this.props.history.push(linkLogin);
+            }}
+            label="Logout"
+            className="p-button-danger p-button-text"
+          />
         }
         model={items}
       />
