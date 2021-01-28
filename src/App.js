@@ -21,11 +21,11 @@ class App extends React.Component {
           <div className="flex flex-col items-center">
             <Button
               label="Show All Rides"
-              className="p-button-raised p-button-help w-3/12 mb-2"
+              className="p-button-raised p-button-help w-full sm:w-3/12 mb-2"
             />
             <Button
               label="Offer A Ride"
-              className="p-button-raised p-button-success w-3/12"
+              className="p-button-raised p-button-success w-full sm:w-3/12"
             />
           </div>
         </CustomCard>

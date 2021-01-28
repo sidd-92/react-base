@@ -2,7 +2,11 @@ import React from "react";
 import { Menubar } from "primereact/menubar";
 import { Button } from "primereact/button";
 
-const items = [];
+const items = [
+  {
+    label: "Home",
+  },
+];
 class DemoMenu extends Menubar {
   constructor(props) {
     super(props);
