@@ -3675,6 +3675,18 @@ video {
   background-image: linear-gradient(to left, #ff416c, #ff4b2b);
 }
 
+.bg-buttonGradient2 {
+  background-image: linear-gradient(45.34deg, #FF1001 5.66%, #FF886A 63.4%, #FFE5BB 94.35%);
+}
+
+.bg-buttonGradient3 {
+  background-image: linear-gradient(45deg, #091B6A, #0029FF);
+}
+
+.bg-buttonGradient4 {
+  background-image: linear-gradient(45deg,#56ab2f,#a8e063);
+}
+
 .from-transparent {
   --gradient-from-color: transparent;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
@@ -23013,6 +23025,18 @@ video {
     background-image: linear-gradient(to left, #ff416c, #ff4b2b);
   }
 
+  .sm\:bg-buttonGradient2 {
+    background-image: linear-gradient(45.34deg, #FF1001 5.66%, #FF886A 63.4%, #FFE5BB 94.35%);
+  }
+
+  .sm\:bg-buttonGradient3 {
+    background-image: linear-gradient(45deg, #091B6A, #0029FF);
+  }
+
+  .sm\:bg-buttonGradient4 {
+    background-image: linear-gradient(45deg,#56ab2f,#a8e063);
+  }
+
   .sm\:from-transparent {
     --gradient-from-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
@@ -42319,6 +42343,18 @@ video {
 
   .md\:bg-buttonGradient {
     background-image: linear-gradient(to left, #ff416c, #ff4b2b);
+  }
+
+  .md\:bg-buttonGradient2 {
+    background-image: linear-gradient(45.34deg, #FF1001 5.66%, #FF886A 63.4%, #FFE5BB 94.35%);
+  }
+
+  .md\:bg-buttonGradient3 {
+    background-image: linear-gradient(45deg, #091B6A, #0029FF);
+  }
+
+  .md\:bg-buttonGradient4 {
+    background-image: linear-gradient(45deg,#56ab2f,#a8e063);
   }
 
   .md\:from-transparent {
@@ -61629,6 +61665,18 @@ video {
     background-image: linear-gradient(to left, #ff416c, #ff4b2b);
   }
 
+  .lg\:bg-buttonGradient2 {
+    background-image: linear-gradient(45.34deg, #FF1001 5.66%, #FF886A 63.4%, #FFE5BB 94.35%);
+  }
+
+  .lg\:bg-buttonGradient3 {
+    background-image: linear-gradient(45deg, #091B6A, #0029FF);
+  }
+
+  .lg\:bg-buttonGradient4 {
+    background-image: linear-gradient(45deg,#56ab2f,#a8e063);
+  }
+
   .lg\:from-transparent {
     --gradient-from-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
@@ -80937,6 +80985,18 @@ video {
     background-image: linear-gradient(to left, #ff416c, #ff4b2b);
   }
 
+  .xl\:bg-buttonGradient2 {
+    background-image: linear-gradient(45.34deg, #FF1001 5.66%, #FF886A 63.4%, #FFE5BB 94.35%);
+  }
+
+  .xl\:bg-buttonGradient3 {
+    background-image: linear-gradient(45deg, #091B6A, #0029FF);
+  }
+
+  .xl\:bg-buttonGradient4 {
+    background-image: linear-gradient(45deg,#56ab2f,#a8e063);
+  }
+
   .xl\:from-transparent {
     --gradient-from-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
@@ -100243,6 +100303,18 @@ video {
 
   .xxl\:bg-buttonGradient {
     background-image: linear-gradient(to left, #ff416c, #ff4b2b);
+  }
+
+  .xxl\:bg-buttonGradient2 {
+    background-image: linear-gradient(45.34deg, #FF1001 5.66%, #FF886A 63.4%, #FFE5BB 94.35%);
+  }
+
+  .xxl\:bg-buttonGradient3 {
+    background-image: linear-gradient(45deg, #091B6A, #0029FF);
+  }
+
+  .xxl\:bg-buttonGradient4 {
+    background-image: linear-gradient(45deg,#56ab2f,#a8e063);
   }
 
   .xxl\:from-transparent {

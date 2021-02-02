@@ -3,5 +3,15 @@
   > .p-menuitem
   > .p-menuitem-link
   .p-menuitem-text {
-  color: white;
+  color: #222831;
+}
+.bg {
+  /* The image used */
+  background-image: url("./img/cab.jpeg");
+  height: 100vh;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-size: cover;
 }

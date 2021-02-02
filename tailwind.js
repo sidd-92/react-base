@@ -177,6 +177,10 @@ module.exports = {
       "gradient-to-tl":
         "linear-gradient(to top left, var(--gradient-color-stops))",
       buttonGradient: "linear-gradient(to left, #ff416c, #ff4b2b)",
+      buttonGradient2:
+        "linear-gradient(45.34deg, #FF1001 5.66%, #FF886A 63.4%, #FFE5BB 94.35%)",
+      buttonGradient3: "linear-gradient(45deg, #091B6A, #0029FF)",
+      buttonGradient4: "linear-gradient(45deg,#56ab2f,#a8e063)",
     },
     gradientColorStops: (theme) => theme("colors"),
     backgroundOpacity: (theme) => theme("opacity"),
