@@ -3,6 +3,7 @@ import TopMenu from "../../TopMenu/TopMenu";
 import CustomCard from "../../CustomCard/CustomCard";
 import { Button } from "primereact/button";
 import { DataTable } from "primereact/datatable";
+import { Accordion, AccordionTab } from "primereact/accordion";
 import { Column } from "primereact/column";
 class Home extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Home extends React.Component {
       showAllRides: false,
       endPlaces: [],
       startPlaces: [],
-      filter: { endPoints: {} },
+      filter: { endPoints: {}, startPoints: {} },
       selectedRide: null,
       rides: [
         {
@@ -147,6 +148,8 @@ class Home extends React.Component {
 
   componentDidMount() {
     let obj = {};
+    let obj2 = {};
+    let allStart = [];
     let allEnds = [];
     this.state.rides.map((item) => {
       if (item.end in obj) {
@@ -155,8 +158,12 @@ class Home extends React.Component {
         allEnds.push(item.end);
       }
     });
-    let allStart = this.state.rides.map((item) => {
-      return item.start;
+    this.state.rides.map((item) => {
+      if (item.start in obj2) {
+      } else {
+        obj2[item.start] = item;
+        allStart.push(item.start);
+      }
     });
     this.setState({
       startPlaces: allStart,
@@ -166,12 +173,22 @@ class Home extends React.Component {
 
   renderAllEndFilter = () => {
     return (
-      <div className="flex-col sm:flex-row flex items-center justify-center lg:justify-evenly mb-6 bg-white p-2">
+      <div className="flex-col sm:flex-row flex items-center justify-between bg-gray-100 px-2">
         <div className="mb-6 sm:mb-0 flex flex-row sm:flex-col items-center">
           <div>To</div>
-          <div className="ml-2 sm:ml-0 text-xs underline text-blue-500 cursor-pointer">
-            Clear All
-          </div>
+          {this.state.filter.endPoints &&
+            Object.keys(this.state.filter.endPoints).length > 0 && (
+              <div
+                onClick={() => {
+                  this.setState({
+                    filter: { ...this.state.filter, endPoints: {} },
+                  });
+                }}
+                className="ml-2 sm:ml-0 text-xs underline text-blue-500 cursor-pointer"
+              >
+                Clear All
+              </div>
+            )}
         </div>
         <div className="flex items-center justify-between sm:justify-start flex-wrap w-11/12 xxxl:w-auto">
           {this.state.endPlaces.length > 0 &&
@@ -203,6 +220,55 @@ class Home extends React.Component {
     );
   };
 
+  renderAllStartFilter = () => {
+    return (
+      <div className="flex-col sm:flex-row flex items-center justify-between bg-gray-100 px-2 border-b border-gray-200">
+        <div className="mb-6 sm:mb-0 flex flex-row sm:flex-col items-center">
+          <div>From</div>
+          {this.state.filter.startPoints &&
+            Object.keys(this.state.filter.startPoints).length > 0 && (
+              <div
+                onClick={() => {
+                  this.setState({
+                    filter: { ...this.state.filter, startPoints: {} },
+                  });
+                }}
+                className="ml-2 sm:ml-0 text-xs underline text-blue-500 cursor-pointer"
+              >
+                Clear All
+              </div>
+            )}
+        </div>
+        <div className="flex items-center justify-between sm:justify-start flex-wrap w-11/12 xxxl:w-auto">
+          {this.state.startPlaces.length > 0 &&
+            this.state.startPlaces.map((item, index) => (
+              <div
+                key={index}
+                onClick={() => {
+                  let filter = this.state.filter;
+                  if (item in filter.startPoints) {
+                    filter.startPoints[item] = false;
+                  } else {
+                    filter.startPoints[item] = true;
+                  }
+                  console.log("filter", filter);
+                  this.setState({ filter });
+                }}
+                className={`${
+                  this.state.filter.startPoints &&
+                  this.state.filter.startPoints[item]
+                    ? " bg-blue-500 text-gray-100 "
+                    : " bg-yellow-400 hover:bg-yellow-200 "
+                } m-2 text-sm transition duration-300 cursor-pointer p-1 rounded-full`}
+              >
+                {item}
+              </div>
+            ))}
+        </div>
+      </div>
+    );
+  };
+
   render() {
     return (
       <div className="w-full">
@@ -221,7 +287,16 @@ class Home extends React.Component {
             />
             {this.state.showAllRides ? (
               <div className="mt-4 mb-10">
-                {this.renderAllEndFilter()}
+                <div className="my-2">
+                  <Accordion>
+                    <AccordionTab header="Filters">
+                      <div className="flex flex-col justify-start">
+                        {this.renderAllStartFilter()}
+                        {this.renderAllEndFilter()}
+                      </div>
+                    </AccordionTab>
+                  </Accordion>
+                </div>
                 <div>
                   <DataTable
                     selection={this.state.selectedRide}
