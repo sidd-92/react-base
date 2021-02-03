@@ -136,7 +136,7 @@ class Home extends React.Component {
           seats: 14,
         },
         {
-          id: 20,
+          id: 21,
           start: "Bunting",
           end: "Clyde Gallagher",
           seats: 14,
@@ -233,7 +233,7 @@ class Home extends React.Component {
                     className="w-full"
                     value={this.state.rides}
                     paginator
-                    rows={10}
+                    rows={5}
                   >
                     <Column field="start" header="Start Point"></Column>
                     <Column field="end" header="End Point"></Column>
