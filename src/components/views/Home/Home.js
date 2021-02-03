@@ -15,6 +15,7 @@ class Home extends React.Component {
       startPlaces: [],
       filter: { endPoints: {}, startPoints: {} },
       selectedRide: null,
+      filteredRides: [],
       rides: [
         {
           id: 1,
@@ -198,7 +199,7 @@ class Home extends React.Component {
                 onClick={() => {
                   let filter = this.state.filter;
                   if (item in filter.endPoints) {
-                    filter.endPoints[item] = false;
+                    delete filter.endPoints[item];
                   } else {
                     filter.endPoints[item] = true;
                   }
@@ -230,6 +231,7 @@ class Home extends React.Component {
               <div
                 onClick={() => {
                   this.setState({
+                    filteredRides: [],
                     filter: { ...this.state.filter, startPoints: {} },
                   });
                 }}
@@ -247,12 +249,24 @@ class Home extends React.Component {
                 onClick={() => {
                   let filter = this.state.filter;
                   if (item in filter.startPoints) {
-                    filter.startPoints[item] = false;
+                    delete filter.startPoints[item];
+                    this.setState({ filteredRides: [] });
                   } else {
                     filter.startPoints[item] = true;
                   }
-                  console.log("filter", filter);
-                  this.setState({ filter });
+                  let filteredArray = this.state.rides.filter((startItem) => {
+                    if (startItem.start == item) {
+                      return startItem.start;
+                    }
+                  });
+                  console.log("filter", filteredArray);
+                  this.setState({
+                    filter,
+                    filteredRides: [
+                      ...this.state.filteredRides,
+                      ...filteredArray,
+                    ],
+                  });
                 }}
                 className={`${
                   this.state.filter.startPoints &&
@@ -306,12 +320,20 @@ class Home extends React.Component {
                     selectionMode="single"
                     dataKey="id"
                     className="w-full"
-                    value={this.state.rides}
+                    value={
+                      ((this.state.filter.startPoints ||
+                        this.state.filter.endPoints) &&
+                        Object.keys(this.state.filter.startPoints).length >
+                          0) ||
+                      Object.keys(this.state.filter.endPoints).length > 0
+                        ? this.state.filteredRides
+                        : this.state.rides
+                    }
                     paginator
                     rows={5}
                   >
-                    <Column field="start" header="Start Point"></Column>
-                    <Column field="end" header="End Point"></Column>
+                    <Column field="start" header="Start Point / From"></Column>
+                    <Column field="end" header="End Point / To"></Column>
                     <Column field="seats" header="Seats Available"></Column>
                   </DataTable>
                 </div>
